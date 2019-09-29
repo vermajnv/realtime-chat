@@ -57,14 +57,16 @@ const app = new Vue({
             .here((users) => {
                 this.userInRoom = users;
             })
-            .leaving((user) => {
-                console.log('leaving=--- ' + user);
+            .leaving((userLeaving) => {
+                // console.log(userLeaving.id);
                 this.userInRoom = this.userInRoom.filter((user) => {
-                    return user != userLeaving;
+                    user != userLeaving
                 })
             })
             .joining((userJoining) => {
-                this.userInRoom = [...new Set(this.userInRoom.push(userJoining))];
+                // console.log(userJoining);
+                this.userInRoom.push(userJoining);
+                // console.log(this.userInRoom);
             })
             .listen('MessagePosted', (eve) => {
                 this.messages.push({

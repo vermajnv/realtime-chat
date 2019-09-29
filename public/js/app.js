@@ -61847,14 +61847,6 @@ module.exports = yeast;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -61905,13 +61897,15 @@ var app = new Vue({
     });
     Echo.join("chatroom").here(function (users) {
       _this.userInRoom = users;
-    }).leaving(function (user) {
-      console.log('leaving=--- ' + user);
+    }).leaving(function (userLeaving) {
+      // console.log(userLeaving.id);
       _this.userInRoom = _this.userInRoom.filter(function (user) {
-        return user != userLeaving;
+        user != userLeaving;
       });
     }).joining(function (userJoining) {
-      _this.userInRoom = _toConsumableArray(new Set(_this.userInRoom.push(userJoining)));
+      // console.log(userJoining);
+      _this.userInRoom.push(userJoining); // console.log(this.userInRoom);
+
     }).listen('MessagePosted', function (eve) {
       _this.messages.push({
         message: eve.message.message,
