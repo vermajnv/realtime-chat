@@ -49,6 +49,7 @@ const app = new Vue({
     },
 
     created() {
+      console.log('created');
         axios.get('/messages').then((response) => {
             this.messages = response.data;
         });
