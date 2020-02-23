@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master\Access;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
+use App\Http\Requests\StoreRole;
 
 class RoleController extends Controller
 {
@@ -36,7 +37,8 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Role::create(['name' => $request->name]);
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -81,6 +83,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::destroy($id);
+        return redirect()->route('roles.index');
     }
 }
