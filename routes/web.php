@@ -29,5 +29,7 @@ Route::prefix('/sitemaster')->group(function() {
     // Route::post('forgot/password', 'Master\Auth\ForgotPasswordController')->name('forgot.password');
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', 'Master\MasterController@index')->name('admin.dashboard');
+        Route::resource('roles', 'Master\Access\RoleController');
+        Route::resource('permission', 'Master\Access\PermissionController');
     });
 });

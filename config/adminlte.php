@@ -179,12 +179,12 @@ return [
             'topnav' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'roles',
+            'url'  => 'sitemaster/roles',
+            'can'  => 'manage-roles',
         ],
         [
-            'text'        => 'pages',
+            'text'        => 'roles',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
@@ -202,12 +202,13 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Access',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Role',
+                    'url'  => 'sitemaster/roles',
+                    // 'can'  => 'manage-roles',
                 ],
                 [
                     'text'    => 'level_one',
