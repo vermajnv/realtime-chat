@@ -41,6 +41,9 @@
                     <th style="width: 30%">
                         Guard Name
                     </th>
+                    <th style="width: 30%">
+                        Permissions
+                    </th>
                     <th style="width: 8%" class="text-center">
                         Status
                     </th>
@@ -68,6 +71,18 @@
                             {{$role->guard_name}}
                         </a>
                     </td>
+                    <td>
+                        @forelse ($role->permissions as $key => $permission)
+                            <a>
+                                {{$permission->name}}
+                            </a>
+                            {{-- <br/> --}}
+                        @empty
+                            <a>
+                                --
+                            </a>
+                        @endforelse
+                    </td>
                     <td class="project-state">
                         <span class="badge badge-success">Success</span>
                     </td>
@@ -75,19 +90,24 @@
                         <a class="btn btn-primary btn-sm" href="#">
                             <i class="fas fa-folder">
                             </i>
-                            View
+                            {{-- View --}}
                         </a>
-                        <a class="btn btn-info btn-sm" href="#">
+                        {{-- <a class="btn btn-info btn-sm" href="#">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
+                        </a> --}}
+                        <a class="btn btn-info btn-sm" href="{{ route('roles.givepermission', $role->id)}}">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                            {{-- Give Permission --}}
                         </a>
                         <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
-                                Delete
+                                {{-- Delete --}}
                             </button>
                         </form>
                     </td>

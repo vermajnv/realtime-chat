@@ -30,6 +30,8 @@ Route::prefix('/sitemaster')->group(function() {
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', 'Master\MasterController@index')->name('admin.dashboard');
         Route::resource('roles', 'Master\Access\RoleController');
-        Route::resource('permission', 'Master\Access\PermissionController');
+        Route::get('roles/givepermission/{id}', 'Master\Access\RoleController@givePermission')->name('roles.givepermission');
+        Route::post('roles/storepermission/{id}', 'Master\Access\RoleController@storePermission')->name('roles.permission.store');
+        Route::resource('permissions', 'Master\Access\PermissionController');
     });
 });

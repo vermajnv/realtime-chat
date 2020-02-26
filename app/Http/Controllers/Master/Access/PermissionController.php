@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master\Access;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
@@ -14,7 +15,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        return view('master.access.permission.index', ['permissions' => Permission::all()]);
     }
 
     /**
@@ -24,7 +25,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.access.permission.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Permission::create(['name' => $request->name]);
+        return redirect()->route('permissions.index');
     }
 
     /**
@@ -80,6 +82,7 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Permission::destroy($id);
+        return redirect()->route('permissions.index');
     }
 }

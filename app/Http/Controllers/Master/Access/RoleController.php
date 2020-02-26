@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master\Access;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
-use App\Http\Requests\StoreRole;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -84,6 +84,20 @@ class RoleController extends Controller
     public function destroy($id)
     {
         Role::destroy($id);
+        return redirect()->route('roles.index');
+    }
+
+    public function givePermission($id)
+    {
+        return view('master.access.role.give-permission', ['permissions' => Permission::all(), 'role' => Role::find($id)]);
+    }
+
+    public function storepermission(Request $request, $id)
+    {
+        $role = Role::find($id);
+        foreach ($request->permission_ids as $key => $permission_id) {
+            $role->givePermissionTo($permission_id);
+        }
         return redirect()->route('roles.index');
     }
 }
