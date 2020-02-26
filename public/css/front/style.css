@@ -1,0 +1,372 @@
+/* Main Naigation Bar on Top CSS Start */
+.navbar-brand {
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+}
+
+.nav-link {
+  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+  font-size: 14.4px;
+}
+/* Main Naigation Bar on Top CSS End */
+
+/* Theme Gradient Part CSS Start */
+/* .masthead {
+  padding-top: 66px;
+  height: 100vh;
+} */
+
+/* .gradient {
+  background: rgb(57, 255, 246);
+  background: linear-gradient(
+    0deg,
+    rgba(57, 255, 246, 1) 0%,
+    rgba(45, 105, 253, 1) 100%
+  );
+} */
+
+/* In case you like to change the main gradient background */
+.masthead {
+  background-image: linear-gradient(
+    135deg,
+    #0061f2 0%,
+    rgba(105, 0, 199, 0.8) 100%
+  );
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  top: 66px;
+}
+
+.svg-border-rounded svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3rem;
+  width: 100%;
+}
+
+.navbar {
+  /* background-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 1) 100%); */
+  background-image: linear-gradient(135deg, #0061f2 0%, #0061f2 100%);
+  /* background-image: linear-gradient(135deg, rgba(105, 0, 199, 1) 0%, rgba(105, 0, 199, 1) 100%); */
+  /* border: none; */
+  /* border-image: linear-gradient(135deg, #0061f2 0%, rgba(105, 0, 199, 1) 100%);; */
+}
+
+.main-content {
+  position: relative;
+  top: 75px;
+}
+
+.masthead-heading {
+  padding-top: 20px;
+  font-family: "Akronim", cursive;
+}
+/* Theme Gradient Part CSS End */
+
+/* Search Bar Card CSS Start */
+.searchbar-card-container {
+  padding-top: 15px;
+}
+
+.searchbar-card {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.searchbar-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: background-color 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  background-color: rgba(58, 57, 57, 0.589);
+  opacity: 0;
+}
+
+.searchbar-card-overlay:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.searchbar-card-overlay:active {
+  opacity: 1;
+  cursor: pointer;
+}
+/* Search Bar Card CSS End */
+
+/* Search Bar CSS Start */
+.searchbar {
+  padding-top: 30px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control-underlined {
+  border-width: 0;
+  border-bottom-width: 1px;
+  border-radius: 0;
+  padding-left: 0;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+/* Search Bar Card CSS End */
+
+/* Page Footer CSS Start */
+.page-footer {
+  position: relative;
+  left: 0;
+  top: 75px;
+  bottom: 0;
+  /* right: 0; */
+  background-color: #45526e !important;
+  color: #fff;
+}
+
+.page-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-btn {
+  margin-left: 5px;
+  color: #fff;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  font-size: 20px;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.footer-btn:hover {
+  color: #fff;
+}
+
+.btn-ripple {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  height: 100%;
+  width: 50%;
+  background-color: #000;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all ease-in-out 0.5s;
+  transform: scale(5, 5);
+  border-radius: 50%;
+}
+
+.btn-ripple:active::after {
+  padding: 0;
+  margin: 0;
+  opacity: 0.2;
+  transition: 0s;
+  transform: scale(0, 0);
+  border-radius: 50%;
+}
+/* Page Footer CSS End */
+
+/* Main Content CSS */
+.main-content {
+  background-color: F8F8F8;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+}
+
+body {
+  background-color: #f8f8f8;
+}
+
+.custom-carousel-container {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  text-align: center !important;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 5rem;
+}
+
+.carousel-heading {
+  font-family: "Sriracha", cursive;
+  text-align: left;
+}
+
+.carousel-para {
+  text-align: left;
+  font-family: "Simonetta", cursive;
+}
+
+.custom-carousel-controls{
+  background-color: #000;
+  max-width: 50px;
+  max-height: 70px;
+  top: 35%;
+}
+
+.carousel-top-btn {
+  margin-left: 20px;
+  margin-bottom: 0px;
+  margin-top: 60px;
+  color: #fff;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  font-size: 20px;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  background-color: #4285f4;
+  text-decoration: none;
+}
+
+.carousel-top-btn:hover {
+  color: #fff;
+}
+
+.btn-ripple {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  height: 100%;
+  width: 50%;
+  background-color: #000;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all ease-in-out 0.5s;
+  transform: scale(5, 5);
+  border-radius: 50%;
+}
+
+.btn-ripple:active::after {
+  padding: 0;
+  margin: 0;
+  opacity: 0.2;
+  transition: 0s;
+  transform: scale(0, 0);
+  border-radius: 50%;
+}
+
+/* Carousel Code that keeps the cards in one row and not in multiple rows. Do not Remove below Code. Its Very Important */
+/* NOTE : VERY IMPORTANT CODE. MAGIC IS HAPPENING HERE. DO NOT TOUCH. DANGER */
+.carousel-multi-item {
+  margin-bottom: 1rem;
+}
+.carousel-multi-item .carousel-inner {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+.carousel-multi-item .carousel-inner .carousel-item.active,
+.carousel-multi-item .carousel-item-next,
+.carousel-multi-item .carousel-item-prev {
+  display: block;
+}
+.carousel-multi-item .carousel-inner.v-2 .carousel-item.active,
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-next,
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-prev {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-right.active,
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-next {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+@media (min-width: 768px) {
+  .carousel-multi-item .carousel-inner.v-2 .carousel-item-right.active,
+  .carousel-multi-item .carousel-inner.v-2 .carousel-item-next {
+    -webkit-transform: translateX(33%);
+    transform: translateX(33%);
+  }
+}
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-left.active,
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-prev {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+@media (min-width: 768px) {
+  .carousel-multi-item .carousel-inner.v-2 .carousel-item-left.active,
+  .carousel-multi-item .carousel-inner.v-2 .carousel-item-prev {
+    -webkit-transform: translateX(-33%);
+    transform: translateX(-33%);
+  }
+}
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-right,
+.carousel-multi-item .carousel-inner.v-2 .carousel-item-left {
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+}
+.carousel-multi-item .carousel-indicators li {
+  width: 1.25rem;
+  max-width: 1.25rem;
+  height: 1.25rem;
+  margin-bottom: -3.75rem;
+  background-color: #4285f4;
+}
+.carousel-multi-item .carousel-indicators .active {
+  width: 1.56rem;
+  max-width: 1.56rem;
+  height: 1.56rem;
+  background-color: #4285f4;
+  border-radius: 50%;
+}
+.carousel-multi-item .controls-top {
+  margin-bottom: 1.88rem;
+  text-align: center;
+}
+.carousel-multi-item .controls-top .btn-floating {
+  background: #4285f4;
+}
+.carousel-multi-item .carousel-indicators {
+  margin-bottom: -1em;
+}
+.carousel-multi-item .card-cascade.narrower {
+  margin-top: 1.25rem;
+  margin-bottom: 0.3rem;
+}
+@media (min-width: 768px) {
+  .carousel-multi-item [class*="col-"] {
+    float: left;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .carousel-multi-item .carousel-indicators li {
+    margin-bottom: -1.88rem;
+  }
+}
