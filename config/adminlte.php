@@ -239,10 +239,27 @@ return [
                 //         ],
                 //     ],
                 // ],
+            ],
+        ],
+        [
+            'text'    => 'Users',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Front User',
+                    'url'  => 'sitemaster/front/users',
+                    // 'can'  => 'manage-roles',
                 ],
+                [
+                    'text' => 'Admin User',
+                    'url'  => 'sitemaster/users',
+                    // 'can'  => 'manage-roles',
+                ],
+                // [
+                //     'text' => 'Permission',
+                //     'url'  => 'sitemaster/permissions',
+                //     // 'can'  => 'manage-roles',
+                // ],
             ],
         ],
         ['header' => 'labels'],
@@ -313,12 +330,12 @@ return [
         ],
         [
             'name' => 'Select2',
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'location' => asset('js/select2/select2.min.js'),
                 ],
                 [
                     'type' => 'css',
