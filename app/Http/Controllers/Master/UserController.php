@@ -19,8 +19,8 @@ class UserController extends Controller
         return view('master.user.index', ['admins' => Admin::all(), 'roles' => Role::all()]);
     }
 
-    public function viewAssignRole()
+    public function assignRole(Request $request)
     {
-        return view('master.user.assign-role', ['roles' => Role::all()]);
+        return Admin::find($request->user_id)->assignRole($request->data['role']);
     }
 }

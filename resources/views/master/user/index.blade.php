@@ -35,13 +35,16 @@
                     <th style="width: 1%">
                         Id
                     </th>
-                    <th style="width: 30%">
+                    <th style="width: 24%">
                         Name
                     </th>
-                    <th style="width: 29%">
+                    <th style="width: 25%">
                         Email
                     </th>
-                    <th style="width: 40%">
+                    <th style="width: 25%">
+                        Roles
+                    </th>
+                    <th style="width: 25%">
                     </th>
                 </tr>
             </thead>
@@ -65,13 +68,25 @@
                             {{$admin->email}}
                         </a>
                     </td>
+                    <td>
+                        @forelse ($admin->roles as $key => $role)
+                            <a>
+                                {{$role->name}}
+                            </a>
+                            {{-- <br/> --}}
+                        @empty
+                            <a>
+                                --
+                            </a>
+                        @endforelse
+                    </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
                             <i class="fas fa-folder">
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="" data-toggle="modal"  data-target="#modal-assign-role" title="Assign Role">
+                        <a class="btn btn-info btn-sm" id="modal_assign_role" href="" data-toggle="modal"  data-target="#modal-assign-role" title="Assign Role" data-myval="{{$admin->id}}">
                             <i class="fas fa-fw fa-share">
                             </i>
                         </a>
@@ -100,4 +115,9 @@
     <script type="text/javascript">
         $('.select2').select2();
     </script>
+    <script src="{{asset('js/admin/toggle-querystring.js')}}">
+
+    </script>
+    <script src="{{asset('js/waitme/init.js')}}"></script>
+    <script type="module" src="{{ asset('js/ajax/user/assign-role.js')}}"></script>
 @stop

@@ -35,5 +35,6 @@ Route::prefix('/sitemaster')->group(function() {
         Route::resource('permissions', 'Master\Access\PermissionController');
         Route::resource('front/users', 'Master\Front\UserController');
         Route::resource('users', 'Master\UserController');
+        Route::post('user/assign/role', 'Master\UserController@assignRole')->name('master.assign.role');
     });
 });

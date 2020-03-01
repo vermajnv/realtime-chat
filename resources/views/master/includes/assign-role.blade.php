@@ -7,22 +7,25 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Roles</label>
-                    <select class="form-control select2" style="width: 100%;">
-                        @forelse ($roles as $key => $role)
-                            <option selected="selected" value="{{$role->name}}">{{$role->name}}</option>
-                        @empty
+            <form id="assignRole" action="{{route('master.assign.role', ['user_id' => ''])}}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Roles</label>
+                        <select class="form-control select2" style="width: 100%;" name="role">
+                            @forelse ($roles as $key => $role)
+                                <option selected="selected" value="{{$role->name}}">{{$role->name}}</option>
+                            @empty
 
-                        @endforelse
-                    </select>
+                            @endforelse
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
         <!-- /.modal-content -->
     </div>
