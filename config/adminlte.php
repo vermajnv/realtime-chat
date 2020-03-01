@@ -340,7 +340,7 @@ return [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'location' => asset('css/select2/select2.min.css'),
                 ],
             ],
         ],
@@ -379,6 +379,22 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'WaitMe',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => asset('css/waitme/waitMe.min.css'),
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => asset('js/waitme/waitMe.min.js'),
                 ],
             ],
         ],
