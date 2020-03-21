@@ -185,7 +185,7 @@ return [
         ],
         [
             'text'        => 'roles',
-            'url'         => 'admin/pages',
+            // 'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
@@ -193,7 +193,7 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'sitemaster/profile/admin',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

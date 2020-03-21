@@ -36,5 +36,6 @@ Route::prefix('/sitemaster')->group(function() {
         Route::resource('front/users', 'Master\Front\UserController');
         Route::resource('users', 'Master\UserController');
         Route::post('user/assign/role', 'Master\UserController@assignRole')->name('master.assign.role');
+        Route::get('profile/admin/{id?}', 'Master\UserController@view')->name('admin.profile');
     });
 });
