@@ -8,7 +8,7 @@
     <div class="row mb-2 flex-end">
         <div class="row">
             <div class="col-12">
-                <a href="#" class="btn btn-success">Create</a>
+                <a href="{{route('user.create')}}" class="btn btn-success">Create</a>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@
                         @endforelse
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
+                        <a class="btn btn-primary btn-sm" href="{{route('admin.profile', ['id' => $admin->id])}}">
                             <i class="fas fa-folder">
                             </i>
                             View
@@ -90,7 +90,7 @@
                             <i class="fas fa-fw fa-share">
                             </i>
                         </a>
-                        <form action="{{ route('permissions.destroy', $admin->id) }}" method="POST">
+                        <form action="" method="">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
