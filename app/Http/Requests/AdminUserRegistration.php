@@ -34,7 +34,10 @@ class AdminUserRegistration extends FormRequest
     public function messages()
     {
         return[
-            'first_name.required' => 'First Name Cannot be Empty.'
+            'first_name.required' => 'First Name Cannot be Empty.',
+            'last_name.required' => 'Last Name Cannot be Empty.',
+            'email.required' => 'Email Cannot be Empty.',
+            'password.required' => 'Password Cannot be Empty.',
         ];
     }
 }
