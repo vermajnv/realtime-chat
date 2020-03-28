@@ -30,12 +30,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Soli</b>Citor',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Solicitor',
 
     /*
     |--------------------------------------------------------------------------
@@ -334,13 +334,13 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => asset('js/select2/select2.min.js'),
+                    'asset' => true,
+                    'location' => 'js/select2/select2.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => asset('css/select2/select2.min.css'),
+                    'asset' => true,
+                    'location' => 'css/select2/select2.min.css',
                 ],
             ],
         ],
@@ -388,13 +388,29 @@ return [
             'files' => [
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => asset('css/waitme/waitMe.min.css'),
+                    'asset' => true,
+                    'location' => 'css/waitme/waitMe.min.css',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => asset('js/waitme/waitMe.min.js'),
+                    'asset' => true,
+                    'location' => 'js/waitme/waitMe.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'Toastr',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/toastr/toastr.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/toastr/toastr.min.js',
                 ],
             ],
         ],
