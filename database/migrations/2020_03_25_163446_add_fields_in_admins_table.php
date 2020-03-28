@@ -16,7 +16,7 @@ class AddFieldsInAdminsTable extends Migration
         Schema::table('admins', function (Blueprint $table) {
             $table->renameColumn('name', 'first_name');
             $table->string('last_name')->after('name')->nullable();
-            $table->integer('mobile_number')->after('email')->nullable();
+            $table->bigInteger('mobile_number')->after('email')->nullable();
         });
     }
 

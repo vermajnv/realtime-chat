@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
 use App\Admin;
 use Auth;
+use Hash;
 use App\Http\Requests\AdminUserRegistration;
 
 class UserController extends Controller
@@ -40,11 +41,13 @@ class UserController extends Controller
 
     public function store(AdminUserRegistration $request)
     {
-        dd($request->validated());
-        return Admin::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        $admin = Admin::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'mobile_number' => $request->mobile_number,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
+        return ($admin) ? redirect()->route('users.index')->with(['message' => 'User created successfully']) : redirect()->back()->with(['message' => 'User cannot be created. Please try again.']);
     }
 }

@@ -8,7 +8,9 @@
     <div class="row mb-2 flex-end">
         <div class="row">
             <div class="col-12">
+                @role('Super Admin')
                 <a href="{{route('user.create')}}" class="btn btn-success">Create</a>
+                @endrole
             </div>
         </div>
     </div>
@@ -114,6 +116,8 @@
 @section('js')
     <script type="text/javascript">
         $('.select2').select2();
+        @include('master.includes.error')
+        @include('master.includes.message')
     </script>
     <script src="{{asset('js/admin/toggle-querystring.js')}}">
 

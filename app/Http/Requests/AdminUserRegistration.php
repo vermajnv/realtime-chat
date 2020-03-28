@@ -38,6 +38,8 @@ class AdminUserRegistration extends FormRequest
             'last_name.required' => 'Last Name Cannot be Empty.',
             'email.required' => 'Email Cannot be Empty.',
             'password.required' => 'Password Cannot be Empty.',
+            'confirmed' => 'Confirm password should be same.',
+            'min' => 'Password should be min 8 char.'
         ];
     }
 }

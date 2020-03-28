@@ -32,21 +32,9 @@
                         </div>
                         <div class="form-group required">
                             <label for="email" class="control-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" {{old('email')}}>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="{{old('email')}}">
                         </div>
                     </div>
-                    {{-- <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="role">Role</label>
-                            <select class="form-control select2" style="width: 100%;" name="role" id="role">
-                                @forelse ($roles as $key => $role)
-                                    <option selected="selected" value="{{$role->name}}">{{$role->name}}</option>
-                                @empty
-
-                                @endforelse
-                            </select>
-                        </div>
-                    </div> --}}
                     <div class="col-md-6">
                         <div class="form-group required">
                             <label for="password" class="control-label">Password</label>
@@ -56,7 +44,7 @@
                     <div class="col-md-6">
                         <div class="form-group required">
                             <label for="confirmPassword" class="control-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Enter password" name="confirm_password">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Enter password" name="password_confirmation">
                         </div>
                     </div>
                 </div>

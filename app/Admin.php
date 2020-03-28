@@ -11,7 +11,7 @@ class Admin extends Authenticatable
     use HasRoles;
     protected $guard = 'auth:admin';
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'mobile_number', 'email', 'password',
     ];
 
     protected $hidden = [
