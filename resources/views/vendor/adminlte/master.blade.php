@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="{{ asset('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
     @include('adminlte::plugins', ['type' => 'css'])
-
     @yield('adminlte_css_pre')
 
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{asset('css/admin/custom.css')}}">
 
     @yield('adminlte_css')
 
