@@ -88,10 +88,12 @@
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" id="modal_assign_role" href="" data-toggle="modal"  data-target="#modal-assign-role" title="Assign Role" data-myval="{{$admin->id}}">
-                            <i class="fas fa-fw fa-share">
-                            </i>
-                        </a>
+                        @role('Super Admin')
+                            <a class="btn btn-info btn-sm" id="modal_assign_role" href="" data-toggle="modal"  data-target="#modal-assign-role" title="Assign Role" data-myval="{{$admin->id}}">
+                                <i class="fas fa-fw fa-share">
+                                </i>
+                            </a>
+                        @endrole
                         <form action="" method="">
                             {{ method_field('DELETE')}}
                             @csrf

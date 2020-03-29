@@ -1,4 +1,5 @@
 <?php
+use App\Filter\MenuFilter;
 
 return [
 
@@ -183,13 +184,6 @@ return [
             'url'  => 'sitemaster/roles',
             'can'  => 'manage-roles',
         ],
-        // [
-        //     'text'        => 'roles',
-        //     // 'url'         => 'admin/pages',
-        //     'icon'        => 'far fa-fw fa-file',
-        //     'label'       => 4,
-        //     'label_color' => 'success',
-        // ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -204,6 +198,7 @@ return [
         [
             'text'    => 'Access',
             'icon'    => 'fas fa-fw fa-share',
+            'role' => 'Super Admin',
             'submenu' => [
                 [
                     'text' => 'Role',
@@ -297,6 +292,7 @@ return [
         JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
         JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
+        App\Filter\MenuFilter::class,
     ],
 
     /*
