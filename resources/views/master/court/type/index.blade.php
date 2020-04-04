@@ -43,8 +43,8 @@
                     <th style="width: 33%">
                         Description
                     </th>
-                    <th style="width: 33%">
-                        Actions
+                    <th style="width: 33%" class="text-right">
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -69,24 +69,24 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <form action="{{route('court-type.destroy', ['court_type' => $court_type])}}" method="POST" class="inline-block">
+                        <a class="btn btn-primary btn-sm" href="{{route('court-type.edit', ['court_type' => $court_type])}}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{{route('court-type.destroy', ['court_type' => $court_type])}}"   method="POST" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
-                        <a class="btn btn-primary btn-sm" href="{{route('court-type.edit', ['court_type' => $court_type])}}">
-                            <i class="fas fa-edit">
-                            </i>
-                            {{-- View --}}
-                        </a>
                     </td>
                     <td class="project-actions text-right">
                     </td>
                 </tr>
                 @empty
-                    No data fond.
+                <tr>
+                    <td colspan="4" class="text-center"> No data found </td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

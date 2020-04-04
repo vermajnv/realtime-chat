@@ -46,7 +46,8 @@
                     <th style="width: 25%">
                         Roles
                     </th>
-                    <th style="width: 25%">
+                    <th class="text-right" style="width: 25%">
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -84,28 +85,27 @@
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="{{route('admin.profile', ['id' => $admin->id])}}">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
+                            <i class="fas fa-eye"></i>
                         </a>
                         @role('Super Admin')
-                            <a class="btn btn-info btn-sm" id="modal_assign_role" href="" data-toggle="modal"  data-target="#modal-assign-role" title="Assign Role" data-myval="{{$admin->id}}">
+                            <a class="btn btn-info btn-sm" id="modal_assign_role" href="" data-toggle="modal" data-target="#modal-assign-role" title="Assign Role" data-myval="{{$admin->id}}">
                                 <i class="fas fa-fw fa-share">
                                 </i>
                             </a>
                         @endrole
-                        <form action="" method="">
+                        <form action="" method="" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
-                                Delete
                             </button>
                         </form>
                     </td>
                 </tr>
                 @empty
-                    No data fond.
+                <tr>
+                    <td colspan="5" class="text-center">No data found</td>
+                </tr> 
                 @endforelse
             </tbody>
         </table>
@@ -113,7 +113,7 @@
 </div>
 @stop
 
-@include('master.includes.assign-role', ['roles' => $roles]);
+@include('master.includes.assign-role', ['roles' => $roles])
 
 @section('js')
     <script type="text/javascript">

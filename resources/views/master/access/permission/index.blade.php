@@ -44,7 +44,8 @@
                     <th style="width: 8%" class="text-center">
                         Status
                     </th>
-                    <th style="width: 20%">
+                    <th class="text-right" style="width: 20%">
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -93,7 +94,9 @@
                     </td>
                 </tr>
                 @empty
-                    No data fond.
+                <tr>
+                    <td colspan="5" class="text-center">No data found</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

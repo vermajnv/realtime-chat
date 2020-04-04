@@ -41,7 +41,8 @@
                     <th style="width: 29%">
                         Email
                     </th>
-                    <th style="width: 40%">
+                    <th class="text-right" style="width: 40%">
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -67,27 +68,26 @@
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
+                            <i class="fas fa-eye">
                             </i>
-                            View
                         </a>
                         <a class="btn btn-info btn-sm" href="#">
                             <i class="fas fa-pencil-alt">
                             </i>
-                            Edit
                         </a>
-                        <form action="{{ route('permissions.destroy', $user->id) }}" method="POST">
+                        <form class="inline-block" action="{{ route('permissions.destroy', $user->id) }}" method="POST">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
-                                Delete
                             </button>
                         </form>
                     </td>
                 </tr>
                 @empty
-                    No data fond.
+                <tr>
+                    <td colspan="5" class="text-center">No data found</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>

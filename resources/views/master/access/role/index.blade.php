@@ -32,22 +32,23 @@
         <table class="table table-striped projects">
             <thead>
                 <tr>
-                    <th style="width: 1%">
+                    <th>
                         Id
                     </th>
-                    <th style="width: 20%">
+                    <th>
                         Title
                     </th>
-                    <th style="width: 30%">
+                    <th>
                         Guard Name
                     </th>
-                    <th style="width: 30%">
+                    <th>
                         Permissions
                     </th>
-                    <th style="width: 8%" class="text-center">
+                    <th class="text-center">
                         Status
                     </th>
-                    <th style="width: 20%">
+                    <th class="text-right"> 
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -88,32 +89,24 @@
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            {{-- View --}}
+                            <i class="fas fa-eye"></i>
                         </a>
-                        {{-- <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a> --}}
                         <a class="btn btn-info btn-sm" href="{{ route('roles.givepermission', $role->id)}}">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            {{-- Give Permission --}}
+                            <i class="fas fa-pencil-alt"></i>
                         </a>
-                        <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                        <form class="inline-block" action="{{ route('roles.destroy', $role->id) }}" method="POST">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
-                                {{-- Delete --}}
                             </button>
                         </form>
                     </td>
                 </tr>
                 @empty
-                    No data fond.
+                <tr>
+                    <td colspan="6" class="text-center">No data found</td>
+                </tr>
                 @endforelse
             </tbody>
         </table>
