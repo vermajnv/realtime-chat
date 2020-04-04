@@ -85,9 +85,7 @@
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="5" class="text-center">No data found</td>
-                </tr>
+                    @include('master.includes.data-not-found', ['colspan' => 5])
                 @endforelse
             </tbody>
         </table>

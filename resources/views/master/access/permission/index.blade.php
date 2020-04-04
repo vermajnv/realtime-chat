@@ -74,29 +74,22 @@
                     </td>
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
+                            <i class="fas fa-eye"></i>
                         </a>
                         <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
+                            <i class="fas fa-pencil-alt"></i>
                         </a>
-                        <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST">
+                        <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
-                                Delete
                             </button>
                         </form>
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="5" class="text-center">No data found</td>
-                </tr>
+                    @include('master.includes.data-not-found', ['colspan' => 5])
                 @endforelse
             </tbody>
         </table>

@@ -47,7 +47,7 @@
                     <th class="text-center">
                         Status
                     </th>
-                    <th class="text-right"> 
+                    <th class="text-right">
                         Action
                     </th>
                 </tr>
@@ -104,9 +104,7 @@
                     </td>
                 </tr>
                 @empty
-                <tr>
-                    <td colspan="6" class="text-center">No data found</td>
-                </tr>
+                    @include('master.includes.data-not-found', ['colspan' => 6])
                 @endforelse
             </tbody>
         </table>
