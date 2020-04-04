@@ -250,11 +250,23 @@ return [
                     'url'  => 'sitemaster/users',
                     // 'can'  => 'manage-roles',
                 ],
-                // [
-                //     'text' => 'Permission',
-                //     'url'  => 'sitemaster/permissions',
-                //     // 'can'  => 'manage-roles',
-                // ],
+            ],
+        ],
+        ['header' => 'MANAGE COURT'],
+        [
+            'text'    => 'Courts',
+            'icon'    => 'fas fa-fw fa-home',
+            'submenu' => [
+                [
+                    'text' => 'Type',
+                    'url'  => 'sitemaster/court-type',
+                    // 'can'  => 'manage-roles',
+                ],
+                [
+                    'text' => 'List',
+                    'url'  => 'sitemaster/users',
+                    // 'can'  => 'manage-roles',
+                ],
             ],
         ],
         ['header' => 'labels'],
