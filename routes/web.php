@@ -38,5 +38,7 @@ Route::prefix('/sitemaster')->group(function() {
         Route::post('user/assign/role', 'Master\UserController@assignRole')->name('master.assign.role');
         Route::get('user/create', 'Master\UserController@create')->name('user.create');
         Route::get('profile/admin/{id?}', 'Master\UserController@view')->name('admin.profile');
+
+        Route::resource('court-type', 'Master\Court\CourtTypeController');
     });
 });

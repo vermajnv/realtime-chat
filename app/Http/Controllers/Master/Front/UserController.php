@@ -21,6 +21,6 @@ class UserController extends Controller
     public function assignRole($role)
     {
 
-        return view('master.front.')
+        // return view('master.front.')
     }
 }
