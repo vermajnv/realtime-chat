@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-</div><!-- /.container-fluid -->
+</div>
 @stop
 
 @section('content')
@@ -69,13 +69,20 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <form action="" method="">
+                        <form action="" method="" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
+                        <a class="btn btn-primary btn-sm" href="{{route('court-type.edit', ['court_type' => $court_type])}}">
+                            <i class="fas fa-folder">
+                            </i>
+                            {{-- View --}}
+                        </a>
+                    </td>
+                    <td class="project-actions text-right">
                     </td>
                 </tr>
                 @empty

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Master\Court;
 
+use Illuminate\Http\Request;
+use App\Http\Requests\CourtTypeValidator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\CourtType;
 use App\Translation\CourtTypeTranslation;
-use Illuminate\Http\Request;
 
 class CourtTypeController extends Controller
 {
@@ -35,19 +37,8 @@ class CourtTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourtTypeValidator $request)
     {
-        $validation = $this->validate($request, [
-            'en_title' => 'required|unique:court_type_translations,title|max:255|string',
-            'hi_title' => 'required|unique:court_type_translations,title|max:255|string',
-            'en_description' => 'nullable|string',
-            'hi_description' => 'nullable|string',
-        ],
-        [
-            'en_title.required' => 'Please add the title in English',
-            'hi_title.required' => 'Please add the title in Hindi',
-        ]
-        );
         return $this->storeCourtType($request);
     }
 
@@ -70,7 +61,7 @@ class CourtTypeController extends Controller
      */
     public function edit(CourtType $courtType)
     {
-        //
+        return view('master.court.type.edit', ['courtType' => $courtType]);
     }
 
     /**
@@ -80,9 +71,11 @@ class CourtTypeController extends Controller
      * @param  \App\CourtType  $courtType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CourtType $courtType)
+    public function update(CourtTypeValidator $request, CourtType $courtType)
     {
-        //
+        $article = CourtType::findOrFail($courtType->id);
+        $article->update($this->getCourtTypeData($request));
+        return redirect()->route('court-type.index')->with('message', 'Court Type has been updated successfully.');
     }
 
     /**
@@ -97,17 +90,22 @@ class CourtTypeController extends Controller
     }
 
     private function storeCourtType($request) {
-        $courtTypeData = [
-       'en' => [
-           'title'       => $request->en_title,
-           'description' => $request->en_description
-       ],
-       'hi' => [
-           'title'       => $request->hi_title,
-           'description' => $request->hi_description
-       ],
-    ];
+        $courtTypeData = $this->getCourtTypeData($request);
         CourtType::create($courtTypeData);
-        return redirect()->route('court-type')->with('message', 'Court Type has been added successfully.');
+        return redirect()->route('court-type.index')->with('message', 'Court Type has been added successfully.');
+    }
+
+    private function getCourtTypeData($request)
+    {
+        return [
+           'en' => [
+               'title'       => $request->en_title,
+               'description' => $request->en_description
+           ],
+           'hi' => [
+               'title'       => $request->hi_title,
+               'description' => $request->hi_description
+           ],
+        ];
     }
 }
