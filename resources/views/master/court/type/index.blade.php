@@ -77,7 +77,7 @@
                             </button>
                         </form>
                         <a class="btn btn-primary btn-sm" href="{{route('court-type.edit', ['court_type' => $court_type])}}">
-                            <i class="fas fa-folder">
+                            <i class="fas fa-edit">
                             </i>
                             {{-- View --}}
                         </a>
