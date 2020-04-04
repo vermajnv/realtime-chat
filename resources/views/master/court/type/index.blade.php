@@ -69,7 +69,7 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <form action="" method="" class="inline-block">
+                        <form action="{{route('court-type.destroy', ['court_type' => $court_type])}}" method="POST" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">

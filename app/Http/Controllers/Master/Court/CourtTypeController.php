@@ -86,7 +86,8 @@ class CourtTypeController extends Controller
      */
     public function destroy(CourtType $courtType)
     {
-        //
+        $courtType->delete();
+        return redirect()->route('court-type.index')->with('message', 'Court Type has been deleted successfully.');
     }
 
     private function storeCourtType($request) {
