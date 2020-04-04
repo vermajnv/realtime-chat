@@ -74,7 +74,6 @@
                             @csrf
                             <button class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i>
-                                Delete
                             </button>
                         </form>
                     </td>

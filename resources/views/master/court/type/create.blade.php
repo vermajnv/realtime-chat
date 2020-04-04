@@ -33,11 +33,11 @@
                                             <div class="col-md-12">
                                                 <div class="form-group required">
                                                     <label for="title" class="control-label">Title</label>
-                                                    <input type="text" class="form-control" id="title" placeholder="Title" name="title_en" value="{{old('title')}}">
+                                                    <input type="text" class="form-control" id="title" placeholder="Title" name="en_title" value="{{old('en_title')}}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="description">Description</label>
-                                                    <textarea class="form-control" id="description" placeholder="Description" name="description_en" value="{{old('description')}}"></textarea>
+                                                    <textarea class="form-control" id="description" placeholder="Description" name="en_description" value="{{old('en_description')}}"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,11 +51,11 @@
                                             <div class="col-md-12">
                                                 <div class="form-group required">
                                                     <label for="title" class="control-label">Title</label>
-                                                    <input type="text" class="form-control" id="title" placeholder="Title" name="title_hi" value="{{old('title')}}">
+                                                    <input type="text" class="form-control" id="title" placeholder="Title" name="hi_title" value="{{old('hi_title')}}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="description">Description</label>
-                                                    <textarea class="form-control" id="description" placeholder="Description" name="description_hi" value="{{old('description')}}"></textarea>
+                                                    <textarea class="form-control" id="description" placeholder="Description" name="hi_description" value="{{old('hi_description')}}"></textarea>
                                                 </div>
                                             </div>
                                         </div>

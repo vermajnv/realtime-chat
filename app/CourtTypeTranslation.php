@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Translation;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
 class CourtTypeTranslation extends Model
 {
-    public $translatedAttributes = ['title', 'description'];
+    protected $fillable = ['title', 'description'];
+
 }
