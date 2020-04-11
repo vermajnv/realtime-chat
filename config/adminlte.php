@@ -264,7 +264,7 @@ return [
                 ],
                 [
                     'text' => 'List',
-                    'url'  => 'sitemaster/users',
+                    'url'  => 'sitemaster/court',
                     // 'can'  => 'manage-roles',
                 ],
             ],
