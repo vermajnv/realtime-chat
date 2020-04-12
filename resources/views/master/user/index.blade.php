@@ -34,21 +34,11 @@
         <table class="table table-striped projects">
             <thead>
                 <tr>
-                    <th style="width: 1%">
-                        Id
-                    </th>
-                    <th style="width: 24%">
-                        Name
-                    </th>
-                    <th style="width: 25%">
-                        Email
-                    </th>
-                    <th style="width: 25%">
-                        Roles
-                    </th>
-                    <th class="text-right" style="width: 25%">
-                        Action
-                    </th>
+                    <th> Id </th>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Roles </th>
+                    <th class="text-right">Action</th>
                 </tr>
             </thead>
             <tbody>
