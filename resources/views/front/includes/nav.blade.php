@@ -30,8 +30,8 @@
 
         <!-- Sign Up and Log In Button Start -->
         <div class="navbar-nav ml-auto">
-            <button class="btn btn-outline-light mr-sm-2">Sign Up</button>
-            <button class="btn btn-outline-light my-2 my-sm-0">Log In</button>
+            <button class="btn btn-outline-light mr-sm-2" data-toggle="modal" data-target="#exampleModal">Sign Up</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#signinModal" >Log In</button>
         </div>
         <!-- Sign Up and Log In Button End -->
     </div>
