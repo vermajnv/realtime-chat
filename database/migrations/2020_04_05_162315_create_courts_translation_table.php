@@ -13,7 +13,7 @@ class CreateCourtsTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('courts_translation', function (Blueprint $table) {
+        Schema::create('court_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('court_id')->nullable();
             $table->string('locale')->index();
