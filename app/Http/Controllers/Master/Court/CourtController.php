@@ -97,6 +97,9 @@ class CourtController extends Controller
     private function getCourtData($request)
     {
         return [
+            'court_type_id' => $request->court_type,
+            'state_id' => $request->state,
+            'city_id' => $request->city,
            'en' => [
                'title'       => $request->en_title,
                'description' => $request->en_description

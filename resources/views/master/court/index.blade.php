@@ -37,13 +37,16 @@
                     <th style="width: 1%">
                         Id
                     </th>
-                    <th style="width: 33%">
+                    <th style="width: 20%">
+                        Court Type
+                    </th>
+                    <th style="width: 20%">
                         Title
                     </th>
-                    <th style="width: 33%">
+                    <th style="width: 39%">
                         Description
                     </th>
-                    <th style="width: 33%" class="text-right">
+                    <th style="width: 20%" class="text-right">
                         Action
                     </th>
                 </tr>
@@ -53,6 +56,9 @@
                 <tr>
                     <td>
                         {{$key + 1}}
+                    </td>
+                    <td>
+                        {{($court->courtType) ? $court->courtType->translate('en')->title : ''}}
                     </td>
                     <td>
                         <a>
