@@ -14,7 +14,7 @@
             <div class="card card-primary card-tabs">
                 @include('master.includes.tab-header')
                 <div class="card-body">
-                    <form role="form" action="{{route('court-type.store')}}" method="post">
+                    <form role="form" action="{{route('court.store')}}" method="post">
                         @csrf
                         <div class="tab-content" id="custom-tabs-one-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
@@ -48,9 +48,9 @@
                         </div>
                         <div class="form-group">
                             <label>Court Type</label>
-                            <select class="form-control select2" style="width: 100%;" name="role">
+                            <select class="form-control select2" style="width: 100%;" name="court_type">
                                 @forelse ($courtTypes as $key => $courtType)
-                                    <option selected="selected" value="{{$courtType->title}}">{{$courtType->title}}</option>
+                                    <option selected="selected" value="{{$courtType->id}}">{{$courtType->title}}</option>
                                 @empty
 
                                 @endforelse
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label>State</label>
-                            <select class="form-control select2 state" style="width: 100%;" name="role" id="state" data-dependent="city">
+                            <select class="form-control select2 state" style="width: 100%;" name="state" id="state">
                                 @forelse ($states as $key => $state)
                                     <option selected="selected" value="{{$state->id}}">{{$state->title}}</option>
                                 @empty

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master\Court;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CourtValidator;
 use App\Court;
 use App\CourtType;
 use App\City;
@@ -37,9 +38,9 @@ class CourtController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourtValidator $request)
     {
-        //
+        return $this->storeCourt($request);
     }
 
     /**
@@ -85,5 +86,25 @@ class CourtController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function storeCourt($request) {
+        $courtTypeData = $this->getCourtData($request);
+        Court::create($courtTypeData);
+        return redirect()->route('court.index')->with('message', 'Court has been added successfully.');
+    }
+
+    private function getCourtData($request)
+    {
+        return [
+           'en' => [
+               'title'       => $request->en_title,
+               'description' => $request->en_description
+           ],
+           'hi' => [
+               'title'       => $request->hi_title,
+               'description' => $request->hi_description
+           ],
+        ];
     }
 }
