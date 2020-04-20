@@ -9,6 +9,7 @@ use App\Court;
 use App\CourtType;
 use App\City;
 use App\State;
+use App\Translation\CourtTranslation;
 
 class CourtController extends Controller
 {
@@ -72,9 +73,11 @@ class CourtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CourtValidator $request, $id)
+    public function update(CourtValidator $request, Court $court)
     {
-        //
+        $court = Court::findOrFail($court->id);
+        $court->update($this->getCourtData($request));
+        return redirect()->route('court.index')->with('message', 'Court has been updated successfully.');
     }
 
     /**

@@ -4,7 +4,7 @@
 
 @section('content_header')
 <div class="container-fluid">
-    @include('partials.breadcrum', ['title' => 'Create Court Type', 'breadcrums' => ['Home', 'Type']])
+    @include('partials.breadcrum', ['title' => 'Create Court', 'breadcrums' => ['Home', 'Court']])
 </div><!-- /.container-fluid -->
 @stop
 @section('content')
@@ -16,6 +16,7 @@
                 <div class="card-body">
                     <form role="form" action="{{route('court.update', ['court' => $court])}}" method="post">
                         @csrf
+                        {{ method_field('PUT') }}
                         <div class="tab-content" id="custom-tabs-one-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                 <div class="row">
@@ -52,7 +53,7 @@
                                 @forelse ($courtTypes as $key => $courtType)
                                     <option value="{{$courtType->id}}" {{ $courtType->id == $court->court_type_id ? "selected=selected" : ''}}>{{$courtType->title}}</option>
                                 @empty
-                                    
+
                                 @endforelse
                             </select>
                         </div>

@@ -55,8 +55,8 @@ class CourtValidator extends FormRequest
             'court_type.required' => 'Please select court type.',
             'state.required' => 'Please select state.',
             'city.required' => 'Please select city.',
-            'en_title.unique' => 'Court type already exist in English.',
-            'hi_title.unique' => 'Court type already exist in Hindi.',
+            'en_title.unique' => 'Court already exist in English.',
+            'hi_title.unique' => 'Court already exist in Hindi.',
         ];
     }
 }
