@@ -75,10 +75,10 @@
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="{{route('court-type.edit', ['court_type' => $court])}}">
+                        <a class="btn btn-primary btn-sm" href="{{route('court.edit', ['court' => $court])}}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <form action="{{route('court-type.destroy', ['court_type' => $court])}}"   method="POST" class="inline-block">
+                        <form action="{{route('court.destroy', ['court' => $court])}}"   method="POST" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">

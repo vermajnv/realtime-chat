@@ -60,9 +60,9 @@ class CourtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Court $court)
     {
-        //
+        return view('master.court.edit', ['court' => $court, 'cities' => City::where(['state_id' => $court->state_id])->get(), 'states' => State::all(), 'courtTypes' => CourtType::all()]);
     }
 
     /**
@@ -72,7 +72,7 @@ class CourtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CourtValidator $request, $id)
     {
         //
     }

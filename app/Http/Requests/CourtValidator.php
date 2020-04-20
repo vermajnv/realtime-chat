@@ -36,10 +36,13 @@ class CourtValidator extends FormRequest
         }
         if ($this->method() == "PUT") {
             return [
-                    'en_title' => 'required|unique:court_type_translations,title,' . $this->court_type->translate('en')->id . '|max:255|string',
-                    'hi_title' => 'required|unique:court_type_translations,title,' . $this->court_type->translate('hi')->id . '|max:255|string',
+                    'en_title' => 'required|unique:court_translations,title,' . $this->court->translate('en')->id . '|max:255|string',
+                    'hi_title' => 'required|unique:court_translations,title,' . $this->court->translate('hi')->id . '|max:255|string',
                     'en_description' => 'nullable|string',
                     'hi_description' => 'nullable|string',
+                    'court_type' => 'required',
+                    'state' => 'required',
+                    'city' => 'required',
                 ];
         }
     }
