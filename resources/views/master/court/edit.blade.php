@@ -4,7 +4,7 @@
 
 @section('content_header')
 <div class="container-fluid">
-    @include('partials.breadcrum', ['title' => 'Create Court', 'breadcrums' => ['Home', 'Court']])
+    @include('partials.breadcrum', ['title' => 'Create Court', 'breadcrums' => ['Home', 'List', 'Court']])
 </div><!-- /.container-fluid -->
 @stop
 @section('content')
