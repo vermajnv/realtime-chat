@@ -4,7 +4,7 @@
 
 @section('content_header')
 <div class="container-fluid">
-    @include('partials.breadcrum', ['title' => 'Court Type', 'breadcrums' => ['Home', 'Court']])
+    @include('partials.breadcrum', ['title' => 'Court', 'breadcrums' => ['Home', 'Court']])
     <div class="row mb-2 flex-end">
         <div class="row">
             <div class="col-12">
@@ -37,14 +37,20 @@
                     <th style="width: 1%">
                         Id
                     </th>
-                    <th style="width: 20%">
+                    <th style="width: 15%">
                         Court Type
                     </th>
-                    <th style="width: 20%">
+                    <th style="width: 15%">
                         Title
                     </th>
                     <th style="width: 39%">
                         Description
+                    </th>
+                    <th style="width: 5%">
+                        State
+                    </th>
+                    <th style="width: 5%">
+                        City
                     </th>
                     <th style="width: 20%" class="text-right">
                         Action
@@ -72,6 +78,16 @@
                     <td>
                         <a>
                             {{$court->description}}
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            {{$court->state ? $court->state->title : '-'}}
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            {{$court->city ? $court->city->title : '-'}}
                         </a>
                     </td>
                     <td class="project-actions text-right">

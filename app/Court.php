@@ -16,4 +16,14 @@ class Court extends Model implements TranslatableContract
     {
         return $this->belongsTo('App\CourtType', 'court_type_id');
     }
+
+    public function state()
+    {
+        return $this->belongsTo('App\State');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
 }
