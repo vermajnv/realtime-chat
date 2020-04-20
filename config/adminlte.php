@@ -422,5 +422,26 @@ return [
                 ],
             ],
         ],
+        [
+            'name' => 'DateRangePicker',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/date-time-picker/datetimepicker.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/date-time-picker/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/date-time-picker/daterangepicker.min.js',
+                ],
+            ],
+        ],
     ],
 ];
