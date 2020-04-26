@@ -86,9 +86,10 @@ class CourtController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Court $court)
     {
-        //
+        $court->delete();
+        return redirect()->route('court.index')->with('message', 'Court has been deleted successfully.');
     }
 
     private function storeCourt($request) {
