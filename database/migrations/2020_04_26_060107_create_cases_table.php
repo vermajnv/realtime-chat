@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourtsTranslationTable extends Migration
+class CreateCasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,17 @@ class CreateCourtsTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('court_translations', function (Blueprint $table) {
+        Schema::create('cases', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('userable_id');
+            $table->string('userable_type');
             $table->unsignedBigInteger('court_id')->nullable();
-            $table->string('locale')->index();
-            $table->string('title');
-            $table->text('description')->nullable();
+            $table->unsignedBigInteger('state_id')->nullable();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->dateTime('case_filed_at');
             $table->foreign('court_id')->references('id')->on('courts')->onDelete('cascade');
+            $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ class CreateCourtsTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courts_translation');
+        Schema::dropIfExists('cases');
     }
 }

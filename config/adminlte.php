@@ -210,30 +210,6 @@ return [
                     'url'  => 'sitemaster/permissions',
                     // 'can'  => 'manage-roles',
                 ],
-                // [
-                //     'text'    => 'level_one',
-                //     'url'     => '#',
-                //     'submenu' => [
-                //         [
-                //             'text' => 'level_two',
-                //             'url'  => '#',
-                //         ],
-                //         [
-                //             'text'    => 'level_two',
-                //             'url'     => '#',
-                //             'submenu' => [
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //             ],
-                //         ],
-                //     ],
-                // ],
             ],
         ],
         [
@@ -255,6 +231,23 @@ return [
         ['header' => 'MANAGE COURT'],
         [
             'text'    => 'Courts',
+            'icon'    => 'fas fa-fw fa-home',
+            'submenu' => [
+                [
+                    'text' => 'Type',
+                    'url'  => 'sitemaster/court-type',
+                    // 'can'  => 'manage-roles',
+                ],
+                [
+                    'text' => 'List',
+                    'url'  => 'sitemaster/court',
+                    // 'can'  => 'manage-roles',
+                ],
+            ],
+        ],
+        ['header' => 'MANAGE CASES'],
+        [
+            'text'    => 'Cases',
             'icon'    => 'fas fa-fw fa-home',
             'submenu' => [
                 [
@@ -419,6 +412,27 @@ return [
                     'type' => 'js',
                     'asset' => true,
                     'location' => 'js/toastr/toastr.min.js',
+                ],
+            ],
+        ],
+        [
+            'name' => 'DateRangePicker',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/date-time-picker/datetimepicker.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/date-time-picker/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/date-time-picker/daterangepicker.min.js',
                 ],
             ],
         ],

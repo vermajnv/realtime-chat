@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourtsTranslationTable extends Migration
+class CreateCaseTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCourtsTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('court_translations', function (Blueprint $table) {
+        Schema::create('case_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('court_id')->nullable();
+            $table->unsignedBigInteger('case_id')->nullable();
             $table->string('locale')->index();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->foreign('court_id')->references('id')->on('courts')->onDelete('cascade');
+            $table->foreign('case_id')->references('id')->on('cases')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateCourtsTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courts_translation');
+        Schema::dropIfExists('case_translations');
     }
 }

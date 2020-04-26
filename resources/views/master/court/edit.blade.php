@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Court Create')
+@section('title', 'Dashboard')
 
 @section('content_header')
 <div class="container-fluid">
-    @include('partials.breadcrum', ['title' => 'Create Court Type', 'breadcrums' => ['Home', 'List', 'Type']])
+    @include('partials.breadcrum', ['title' => 'Create Court', 'breadcrums' => ['Home', 'List', 'Court']])
 </div><!-- /.container-fluid -->
 @stop
 @section('content')
@@ -14,19 +14,20 @@
             <div class="card card-primary card-tabs">
                 @include('master.includes.tab-header')
                 <div class="card-body">
-                    <form role="form" action="{{route('court.store')}}" method="post">
+                    <form role="form" action="{{route('court.update', ['court' => $court])}}" method="post">
                         @csrf
+                        {{ method_field('PUT') }}
                         <div class="tab-content" id="custom-tabs-one-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group required">
                                             <label for="title" class="control-label">Title</label>
-                                            <input type="text" class="form-control" id="title" placeholder="Title" name="en_title" value="{{old('en_title')}}">
+                                            <input type="text" class="form-control" id="title" placeholder="Title" name="en_title" value="{{$court->translate('en')->title}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" id="description" placeholder="Description" name="en_description" value="{{old('en_description')}}"></textarea>
+                                            <textarea class="form-control" id="description" placeholder="Description" name="en_description">{{$court->translate('en')->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -36,11 +37,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group required">
                                             <label for="title" class="control-label">Title</label>
-                                            <input type="text" class="form-control" id="title" placeholder="Title" name="hi_title" value="{{old('hi_title')}}">
+                                            <input type="text" class="form-control" id="title" placeholder="Title" name="hi_title" value="{{$court->translate('hi')->title}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" id="description" placeholder="Description" name="hi_description" value="{{old('hi_description')}}"></textarea>
+                                            <textarea class="form-control" id="description" placeholder="Description" name="hi_description">{{$court->translate('hi')->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -48,9 +49,9 @@
                         </div>
                         <div class="form-group">
                             <label>Court Type</label>
-                            <select class="form-control select2" style="width: 100%;" name="court_type">
+                            <select class="form-control select2 court-type" style="width: 100%;" name="court_type">
                                 @forelse ($courtTypes as $key => $courtType)
-                                    <option selected="selected" value="{{$courtType->id}}">{{$courtType->title}}</option>
+                                    <option value="{{$courtType->id}}" {{ $courtType->id == $court->court_type_id ? "selected=selected" : ''}}>{{$courtType->title}}</option>
                                 @empty
 
                                 @endforelse
@@ -59,8 +60,9 @@
                         <div class="form-group">
                             <label>State</label>
                             <select class="form-control select2 state" style="width: 100%;" name="state" id="state">
+                                <option selected="selected">Select State</option>
                                 @forelse ($states as $key => $state)
-                                    <option selected="selected" value="{{$state->id}}">{{$state->title}}</option>
+                                    <option value="{{$state->id}}" {{ $state->id == $court->state_id ? "selected=selected" : ''}}>{{$state->title}}</option>
                                 @empty
 
                                 @endforelse
@@ -68,8 +70,12 @@
                         </div>
                         <div class="form-group">
                             <label>City</label>
-                            <select class="form-control select2" style="width: 100%;" name="city" id="city">
-                                <option selected="selected" value="">Select City</option>
+                            <select class="form-control select2 city" style="width: 100%;" name="city" id="city">
+                                @forelse ($cities as $key => $city)
+                                    <option value="{{$city->id}}" {{ $city->id == $court->city_id ? "selected=selected" : ''}}>{{$city->title}}</option>
+                                @empty
+                                    <option selected="selected" value="">Select City</option>
+                                @endforelse
                             </select>
                         </div>
                         <div class="card-footer">
@@ -85,12 +91,11 @@
 
 @section('js')
 <script type="text/javascript">
-    $('.select2').select2();
+    $('.court-type').select2();
+    $('.state').select2();
+    $('.city').select2();
+
     let getCityUrl = '{{ route('get-city')}}';
-<<<<<<< HEAD
-    //console.log('test');
-=======
->>>>>>> a16b1b03003dd6eccd102a195cbbd92b961bdb4d
     @include('master.includes.error')
     @include('master.includes.message')
 </script>

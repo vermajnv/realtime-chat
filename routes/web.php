@@ -41,5 +41,9 @@ Route::prefix('/sitemaster')->group(function() {
         Route::get('profile/admin/{id?}', 'Master\UserController@view')->name('admin.profile');
 
         Route::resource('court-type', 'Master\Court\CourtTypeController');
+
+        Route::resource('court', 'Master\Court\CourtController');
+
+        Route::get('city/{state_id?}', 'StateCityController@getCity')->name('get-city');
     });
 });
