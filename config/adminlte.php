@@ -137,9 +137,9 @@ return [
 
     'dashboard_url' => 'home',
 
-    'logout_url' => 'logout',
+    'logout_url' => 'sitemaster/logout',
 
-    'login_url' => 'login',
+    'login_url' => 'sitemaster/login',
 
     'register_url' => 'register',
 

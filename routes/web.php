@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/chat', 'ChatController@index');
 Route::get('/messages', 'ChatController@getMessages')->name('chat.message');
@@ -21,11 +21,12 @@ Route::post('/message/store', 'ChatController@store')->name('chat.message.store'
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::prefix('/sitemaster')->group(function() {
     Route::get('/login', 'Master\Auth\LoginController@showloginform')->name('admin.login');
     Route::post('/login', 'Master\Auth\LoginController@login')->name('admin.login');
-    Route::post('/logout', 'Master\Auth\LoginController@logout')->name('logout');
+    Route::post('/logout', 'Master\Auth\LoginController@logout')->name('admin.logout');
     // Route::post('forgot/password', 'Master\Auth\ForgotPasswordController')->name('forgot.password');
     Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/', 'Master\MasterController@index')->name('admin.dashboard');

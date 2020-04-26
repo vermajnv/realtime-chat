@@ -6,17 +6,18 @@
                     <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
                         <div class="card card-signin-signup">
                             <div class="card-body">
-                                <h5 class="card-title text-center">Sign In</h5>
-                                <form class="form-signin-signup">
+                                <h5 class="card-title text-center">{{ __('Login') }}</h5>
+                                <form class="form-signin-signup" method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="form-label-group">
                                         <input type="email" id="inputUsername" class="form-control"
-                                            placeholder="Username" required autofocus>
+                                            placeholder="Username" name="email" required autofocus>
                                         <label for="inputUsername">Username</label>
                                     </div>
 
                                     <div class="form-label-group">
                                         <input type="password" id="inputPassword" class="form-control"
-                                            placeholder="Password" required>
+                                            placeholder="Password" name="password" required>
                                         <label for="inputPassword">Password</label>
                                     </div>
 

@@ -30,8 +30,34 @@
 
         <!-- Sign Up and Log In Button Start -->
         <div class="navbar-nav ml-auto">
-            <button class="btn btn-outline-light mr-sm-2" data-toggle="modal" data-target="#exampleModal">Sign Up</button>
-            <button class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#signinModal" >Log In</button>
+            @guest
+                @if (Route::has('register'))
+                    <button class="btn btn-outline-light mr-sm-2" data-toggle="modal" data-target="#exampleModal">Sign Up</button>
+                @endif
+                <button class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#signinModal" >Log In</button>
+            @else
+                {{-- <button class="btn btn-outline-light my-2 my-sm-0" >Profile</button> --}}
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="javascript:;">Profile </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            @endguest
         </div>
         <!-- Sign Up and Log In Button End -->
     </div>
