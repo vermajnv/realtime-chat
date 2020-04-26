@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Chat', 'user_id');
     }
+
+    public function cases()
+    {
+        return $this->morphMany('App\Case', 'userable');
+    }
 }

@@ -210,30 +210,6 @@ return [
                     'url'  => 'sitemaster/permissions',
                     // 'can'  => 'manage-roles',
                 ],
-                // [
-                //     'text'    => 'level_one',
-                //     'url'     => '#',
-                //     'submenu' => [
-                //         [
-                //             'text' => 'level_two',
-                //             'url'  => '#',
-                //         ],
-                //         [
-                //             'text'    => 'level_two',
-                //             'url'     => '#',
-                //             'submenu' => [
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //                 [
-                //                     'text' => 'level_three',
-                //                     'url'  => '#',
-                //                 ],
-                //             ],
-                //         ],
-                //     ],
-                // ],
             ],
         ],
         [
@@ -255,6 +231,23 @@ return [
         ['header' => 'MANAGE COURT'],
         [
             'text'    => 'Courts',
+            'icon'    => 'fas fa-fw fa-home',
+            'submenu' => [
+                [
+                    'text' => 'Type',
+                    'url'  => 'sitemaster/court-type',
+                    // 'can'  => 'manage-roles',
+                ],
+                [
+                    'text' => 'List',
+                    'url'  => 'sitemaster/court',
+                    // 'can'  => 'manage-roles',
+                ],
+            ],
+        ],
+        ['header' => 'MANAGE CASES'],
+        [
+            'text'    => 'Cases',
             'icon'    => 'fas fa-fw fa-home',
             'submenu' => [
                 [
