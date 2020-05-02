@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Case extends Model
+class CourtCase extends Model
 {
+    protected $table = 'cases';
     public function userable()
     {
         return $this->morphTo();

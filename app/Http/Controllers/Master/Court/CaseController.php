@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master\Court;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\CourtCase;
 
 class CaseController extends Controller
 {
@@ -14,7 +15,7 @@ class CaseController extends Controller
      */
     public function index()
     {
-        return view('master.case.index');
+        return view('master.case.index', ['cases' => CourtCase::all()]);
     }
 
     /**

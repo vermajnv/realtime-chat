@@ -58,43 +58,43 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @forelse ($courts as $key => $court)
+                @forelse ($cases as $key => $case)
                 <tr>
                     <td>
                         {{$key + 1}}
                     </td>
                     <td>
-                        {{($court->courtType) ? $court->courtType->translate('en')->title : ''}}
+                        {{($case->courtType) ? $case->courtType->translate('en')->title : ''}}
                     </td>
                     <td>
                         <a>
-                            {{$court->title}}
+                            {{$case->title}}
                         </a>
                         <br />
                         <small>
-                            Created {{$court->created_at}}
+                            Created {{$case->created_at}}
                         </small>
                     </td>
                     <td>
                         <a>
-                            {{$court->description}}
+                            {{$case->description}}
                         </a>
                     </td>
                     <td>
                         <a>
-                            {{$court->state ? $court->state->title : '-'}}
+                            {{$case->state ? $case->state->title : '-'}}
                         </a>
                     </td>
                     <td>
                         <a>
-                            {{$court->city ? $court->city->title : '-'}}
+                            {{$case->city ? $case->city->title : '-'}}
                         </a>
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="{{route('court.edit', ['court' => $court])}}">
+                        <a class="btn btn-primary btn-sm" href="{{route('court.edit', ['court' => $case])}}">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <form action="{{route('court.destroy', ['court' => $court])}}"   method="POST" class="inline-block">
+                        <form action="{{route('court.destroy', ['court' => $case])}}"   method="POST" class="inline-block">
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
@@ -107,7 +107,7 @@
                 </tr>
                 @empty
                     @include('master.includes.data-not-found', ['colspan' => 4])
-                @endforelse --}}
+                @endforelse
             </tbody>
         </table>
     </div>
