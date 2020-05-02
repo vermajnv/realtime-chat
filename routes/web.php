@@ -44,5 +44,7 @@ Route::prefix('/sitemaster')->group(function() {
         Route::resource('court', 'Master\Court\CourtController');
 
         Route::get('city/{state_id?}', 'StateCityController@getCity')->name('get-city');
+
+        Route::resource('case', 'Master\Court\CaseController');
     });
 });

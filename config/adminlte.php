@@ -250,14 +250,14 @@ return [
             'text'    => 'Cases',
             'icon'    => 'fas fa-fw fa-home',
             'submenu' => [
-                [
-                    'text' => 'Type',
-                    'url'  => 'sitemaster/court-type',
-                    // 'can'  => 'manage-roles',
-                ],
+                // [
+                //     'text' => 'Type',
+                //     'url'  => 'sitemaster/case',
+                //     // 'can'  => 'manage-roles',
+                // ],
                 [
                     'text' => 'List',
-                    'url'  => 'sitemaster/court',
+                    'url'  => 'sitemaster/case',
                     // 'can'  => 'manage-roles',
                 ],
             ],
