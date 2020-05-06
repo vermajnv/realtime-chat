@@ -17,6 +17,7 @@
         // dd(asset('front/css/style.css'))
     @endphp
     <link rel="stylesheet" href="{{asset('css/front/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/front/test.css')}}">
     <!--JS-->
     <script type="text/javascript" src="{{ asset('js/front/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/front/popper.min.js')}}"></script>
@@ -26,7 +27,7 @@
 
 <body id="page-top">
     @include('front.includes.nav')
-    @include('front.includes.header')
+    {{-- @include('front.includes.header') --}}
     @yield('content')
     @include('front.includes.footer')
     @stack('scripts')

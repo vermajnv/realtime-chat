@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('front.home');
     }
+
+    public function profile()
+    {
+        return view('front/profile');
+    }
 }
