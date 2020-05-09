@@ -87,10 +87,6 @@
 <script type="text/javascript">
     $('.select2').select2();
     let getCityUrl = '{{ route('get-city')}}';
-<<<<<<< HEAD
-    //console.log('test');
-=======
->>>>>>> a16b1b03003dd6eccd102a195cbbd92b961bdb4d
     @include('master.includes.error')
     @include('master.includes.message')
 </script>

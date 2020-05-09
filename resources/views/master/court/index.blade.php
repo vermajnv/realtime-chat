@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
                 @role('Super Admin')
-                    <a href="{{route('court.create')}}" class="btn btn-success">Create</a>
+                    <a href="{{route('case.create')}}" class="btn btn-success">Create</a>
                 @endrole
             </div>
         </div>
@@ -37,32 +37,21 @@
                 <tr>
                     <th style="width: 1%">
                         Id
-                    </th>
-<<<<<<< HEAD
-                    <th style="width: 20%">
-                        Court Type
-                    </th>
-                    <th style="width: 20%">
-=======
                     <th style="width: 15%">
                         Court Type
                     </th>
                     <th style="width: 15%">
->>>>>>> a16b1b03003dd6eccd102a195cbbd92b961bdb4d
                         Title
                     </th>
                     <th style="width: 39%">
                         Description
                     </th>
-<<<<<<< HEAD
-=======
                     <th style="width: 5%">
                         State
                     </th>
                     <th style="width: 5%">
                         City
                     </th>
->>>>>>> a16b1b03003dd6eccd102a195cbbd92b961bdb4d
                     <th style="width: 20%" class="text-right">
                         Action
                     </th>
@@ -91,13 +80,6 @@
                             {{$court->description}}
                         </a>
                     </td>
-<<<<<<< HEAD
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="{{route('court-type.edit', ['court_type' => $court])}}">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form action="{{route('court-type.destroy', ['court_type' => $court])}}"   method="POST" class="inline-block">
-=======
                     <td>
                         <a>
                             {{$court->state ? $court->state->title : '-'}}
@@ -113,7 +95,6 @@
                             <i class="fas fa-edit"></i>
                         </a>
                         <form action="{{route('court.destroy', ['court' => $court])}}"   method="POST" class="inline-block">
->>>>>>> a16b1b03003dd6eccd102a195cbbd92b961bdb4d
                             {{ method_field('DELETE')}}
                             @csrf
                             <button class="btn btn-danger btn-sm">
