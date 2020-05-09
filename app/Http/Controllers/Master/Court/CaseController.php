@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Master\Court;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\CourtCase;
+use App\State;
+use App\Court;
 
 class CaseController extends Controller
 {
@@ -25,7 +27,7 @@ class CaseController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.case.create', ['states' => State::all(), 'courts' => Court::all()]);
     }
 
     /**
