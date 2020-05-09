@@ -22,9 +22,9 @@
                                     </div>
 
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck"
-                                            name="remember-me">
-                                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                        {{-- <input type="checkbox" class="custom-control-input" id="customCheck" name="remember-me"> --}}
+                                        <input type="checkbox" class="custom-control-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="remember">Remember Me</label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" id="signin">Sign In</button>
                                     <hr class="my-4">

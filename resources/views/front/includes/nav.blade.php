@@ -1,7 +1,7 @@
 <!-- Nav Bar Start -->
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
     <!-- Logo Start -->
-    <a class="navbar-brand" href="#page-top">
+    <a class="navbar-brand" href="/">
         <img src="{{asset('images/front/logo.png')}}" alt="Logo" style="width:40px;" />
         Solicitor
     </a>
@@ -44,7 +44,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="javascript:;">Profile </a>
+                            <a class="dropdown-item" href="{{ route('profile') }}">Profile </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

@@ -22,6 +22,7 @@ Route::post('/message/store', 'ChatController@store')->name('chat.message.store'
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/profile','HomeController@profile')->name('profile');
 
 Route::prefix('/sitemaster')->group(function() {
     Route::get('/login', 'Master\Auth\LoginController@showloginform')->name('admin.login');

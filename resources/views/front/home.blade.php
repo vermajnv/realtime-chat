@@ -1,5 +1,5 @@
 @extends('front.layouts.app')
-
+@include('front.includes.header')
 @section('content')
     <!-- Main Content Body Start -->
     <div class="main-content">
