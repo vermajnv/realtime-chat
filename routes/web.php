@@ -14,7 +14,8 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('/interview', 'InterviewController@list');
+Route::post('/interview/store', 'InterviewController@store')->name('interview.store');
 Route::get('/chat', 'ChatController@index');
 Route::get('/messages', 'ChatController@getMessages')->name('chat.message');
 Route::post('/message/store', 'ChatController@store')->name('chat.message.store');
