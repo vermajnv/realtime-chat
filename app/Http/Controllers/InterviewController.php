@@ -59,6 +59,43 @@ class InterviewController extends Controller
         return Response::json(['status' => 1, 'message' => 'success']);
     }
 
+    public function storePage(Request $request)
+    {   
+        $xml = '';
+        $answerField = '';
+        for ($page = 1; $page <= $request->_page; $page++) {
+            $questionCount = $request->{'_questionCountPage' . $page};
+            $fields = '';
+            $question = $request->{'question' . $page};
+            $header = <<<HEADER
+                question: |
+                 Page {$page}?
+                subquestion: |
+                 {$question}
+                fields: \n
+                HEADER;
+            for ($questionCount; $questionCount > 0 ; $questionCount--) {
+                $fieldName = $request->{'question' . $page . '_' . $questionCount . '_field'};
+                $varibaleName = $request->{'question' . $page . '_' . $questionCount . '_var'};
+                $answerField .= "\${" . $request->{'question' . $page . '_' . $questionCount . '_var'} . "} ";  
+                $fields .= <<<FIELDS
+                 - {$fieldName}: {$varibaleName} \n
+                FIELDS;  
+            }
+            $xml .= $header . $fields . "---\n"; 
+        }
+
+        $xml .= <<<ANSWER
+        question: Result of question
+        subquestion: |
+         target_variable is: {$answerField }
+        mandatory: True
+        ANSWER;
+        Storage::disk('uploads')->put('interviews/new_multiple.yml', $xml);
+        Self::uploadFileToDocassembleCurl();
+        return Response::json(['status' => 1, 'message' => 'success']);
+    }
+
     private static function uploadFileToDocassemble()
     {
         $client = new Client(['headers' => ['X-API-Key' => 'rypVUUEsaDn4lniaGNRG29NZRISBItym']]);
@@ -112,7 +149,7 @@ class InterviewController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => array('file'=> new \CURLFILE('/var/www/html/privatechat.example.com/public/uploads/interviews/new.yml', '', 'api_test.yml'),'folder' => 'questions'),
+            CURLOPT_POSTFIELDS => array('file'=> new \CURLFILE('/var/www/html/privatechat.example.com/public/uploads/interviews/new_multiple.yml', '', 'api_test.yml'),'folder' => 'questions'),
             CURLOPT_HTTPHEADER => array(
                 "X-API-Key: rypVUUEsaDn4lniaGNRG29NZRISBItym"
             ),

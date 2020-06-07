@@ -13,7 +13,9 @@
     <div class="container">
         <form action="#" method="post" id="myForm" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{csrf_token()}}" id="csrf_token">
-            <input type="hidden" name="_questionCount" value="1" id="questionCount">
+            <input type="hidden" name="_questionCountPage1" value="1" id="questionCountPage1">
+            <input type="hidden" name="_questionCountPage2" value="1" id="questionCountPage2">
+            <input type="hidden" name="_page" value="1" id="current_page">
             <div class="tabs">
                 <ul>
                     <li class="is-active" id="page1"><a>Page 1</a></li>
@@ -28,19 +30,20 @@
                 </div>
                 <div class="columns">
                     <div class="column">
-                    
                         <div class="field">
-                            <label class="label">Your question</label>
+                            <label class="label">Page title</label>
                             <div class="control">
                                 <input class="input" type="text" placeholder="Text input" name="question1">
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="columns">
                     <div class="column">
                         <div class="field">
                             <label class="label">Variable Name</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text input" name="question1_var">
+                                <input class="input" type="text" placeholder="Text input" name="question1_1_var">
                             </div>
                         </div>
                     </div>
@@ -48,7 +51,7 @@
                         <div class="field">
                             <label class="label">Field Name</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text input" name="question1_field">
+                                <input class="input" type="text" placeholder="Text input" name="question1_1_field">
                             </div>
                         </div>
                     </div>
@@ -57,7 +60,7 @@
                     <div class="column">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="quastion1_mendatory" >
+                                <input type="checkbox" name="quastion1_1_mendatory" >
                                 Mandatory
                             </label>
                         </div>
@@ -73,17 +76,19 @@
                 <div class="columns">
                     <div class="column">
                         <div class="field">
-                            <label class="label">Your question page</label>
+                            <label class="label">Page title 2</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text input" name="question1">
+                                <input class="input" type="text" placeholder="Text input" name="question2">
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="columns">
                     <div class="column">
                         <div class="field">
                             <label class="label">Variable Name</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text input" name="question1_var">
+                                <input class="input" type="text" placeholder="Text input" name="question2_1_var">
                             </div>
                         </div>
                     </div>
@@ -91,7 +96,7 @@
                         <div class="field">
                             <label class="label">Field Name</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Text input" name="question1_field">
+                                <input class="input" type="text" placeholder="Text input" name="question2_1_field">
                             </div>
                         </div>
                     </div>
@@ -100,7 +105,7 @@
                     <div class="column">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="quastion1_mendatory" >
+                                <input type="checkbox" name="quastion2_1_mendatory" >
                                 Mandatory
                             </label>
                         </div>
@@ -112,24 +117,6 @@
                     <div class="buttons">
                         <a class="button is-primary" href="#" id="addMore">+ Add Question</a>
                     </div>
-                </div>
-            </div>
-            <div class="column">
-                <div id="file-js-example" class="file has-name">
-                    <label class="file-label">
-                        <input class="file-input" type="file" name="template" id="file">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fas fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Choose a file…
-                            </span>
-                        </span>
-                        <span class="file-name">
-                            No file uploaded
-                        </span>
-                    </label>
                 </div>
             </div>
 
@@ -156,7 +143,7 @@
                 redirect: 'follow',
             };
             
-            var myRequest = new Request('{{ route('interview.store')}}', myInit);
+            var myRequest = new Request('{{ route('interview.storepage')}}', myInit);
             
             fetch(myRequest).then(function(response) {
                 document.querySelector('#submitForm').innerHTML = 'Please Wait...';
@@ -174,22 +161,16 @@
         let clicks = 0;
         document.querySelector('#addMore').addEventListener('click', (event) => {
             event.preventDefault();
-            let questionCount = document.querySelector('#questionCount').value;
-            document.querySelector('#questionCount').value = questionCount* 1 + 1; 
-            document.querySelector('#wrapper1').innerHTML += `<div class="columns">
-                <div class="column">
-                    <div class="field">
-                        <label class="label">Your question</label>
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Text input" name="question${questionCount* 1 + 1}">
-                        </div>
-                    </div>
-                </div>
+            let page = document.querySelector('#current_page').value;
+            let questionCount = document.querySelector('#questionCountPage' + page).value;
+            document.querySelector('#questionCountPage' + page).value = questionCount* 1 + 1;
+
+            document.querySelector('#wrapper' + page).innerHTML += `<div class="columns">
                 <div class="column">
                     <div class="field">
                         <label class="label">Variable Name</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Text input" name="question${questionCount* 1 + 1}_var">
+                            <input class="input" type="text" placeholder="Text input" name="question${page}_${questionCount* 1 + 1}_var">
                         </div>
                     </div>
                 </div>
@@ -197,7 +178,7 @@
                     <div class="field">
                         <label class="label">Field Name</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Text input" name="question${questionCount* 1 + 1}_field">
+                            <input class="input" type="text" placeholder="Text input" name="question${page}_${questionCount* 1 + 1}_field">
                         </div>
                     </div>
                 </div>
@@ -206,7 +187,7 @@
                 <div class="column">
                     <div class="field">
                         <label class="checkbox">
-                            <input type="checkbox" name="quastion${questionCount* 1 + 1}_mendatory" >
+                            <input type="checkbox" name="quastion${page}_${questionCount* 1 + 1}_mendatory" >
                             Mandatory
                         </label>
                     </div>
@@ -214,21 +195,15 @@
             </div>`;
         });
 
-        const fileInput = document.querySelector('#file-js-example input[type=file]');
-        fileInput.onchange = () => {
-            if (fileInput.files.length > 0) {
-            const fileName = document.querySelector('#file-js-example .file-name');
-            fileName.textContent = fileInput.files[0].name;
-            }
-        }
-
         document.querySelector('#page1').addEventListener('click', (event) => {
             document.querySelector('#wrapper1').style.display = "block";
             document.querySelector('#wrapper2').style.display = "none";
+            document.querySelector('#current_page').value = 1;
         })
         document.querySelector('#page2').addEventListener('click', (event) => {
             document.querySelector('#wrapper1').style.display = "none";
             document.querySelector('#wrapper2').style.display = "block";
+            document.querySelector('#current_page').value = 2;
         })
     </script>
 </body>
