@@ -14,6 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/interview1', 'InterviewController@list1');
 Route::get('/interview', 'InterviewController@list');
 Route::post('/interview/store', 'InterviewController@store')->name('interview.store');
 Route::post('/interview/storepage', 'InterviewController@storePage')->name('interview.storepage');

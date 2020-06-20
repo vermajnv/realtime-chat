@@ -13,27 +13,31 @@ class InterviewController extends Controller
     {
         return view('interview.dualpage');
     }
+    public function list1()
+    {
+        return view('interview.index');
+    }
 
     public function store(Request $request)
     {
         if ($request->hasFile('template')) {
             Self::uploadTemplateFile($request->file('template'));
         }
-        
+
         $questionCount = $request->_questionCount;
         $xml = '';
         $answerField = '';
         $condition = '';
-        for ($questionCount; $questionCount > 0 ; $questionCount--) { 
+        for ($questionCount; $questionCount > 0 ; $questionCount--) {
             $condition = (isset($request->{'quastion' . $questionCount . '_mendatory'})) ? 'mandatory: True' : '';
             $question = $request->{'question' . $questionCount};
             $varibaleName = $request->{'question' . $questionCount . '_var'};
             $fieldName = $request->{'question' . $questionCount . '_field'};
-            $answerField .= "\${" . $request->{'question' . $questionCount . '_var'} . "} "; 
+            $answerField .= "\${" . $request->{'question' . $questionCount . '_var'} . "} ";
             $xml .= <<<XML
             question: |
              {$question} ?
-            fields: 
+            fields:
              - {$fieldName}: {$varibaleName}
             ---
             \n
@@ -60,7 +64,14 @@ class InterviewController extends Controller
     }
 
     public function storePage(Request $request)
-    {   
+    {
+        $is_mandatory = '';
+        if ($request->mendatory_var && $request->question_condition) {
+            $is_mandatory = <<<CONDITION
+            mandatory: |
+             {$request->mendatory_var} == "{$request->question_condition}" \n
+            CONDITION;
+        }
         $xml = '';
         $answerField = '';
         for ($page = 1; $page <= $request->_page; $page++) {
@@ -77,18 +88,27 @@ class InterviewController extends Controller
             for ($questionCount; $questionCount > 0 ; $questionCount--) {
                 $fieldName = $request->{'question' . $page . '_' . $questionCount . '_field'};
                 $varibaleName = $request->{'question' . $page . '_' . $questionCount . '_var'};
-                $answerField .= "\${" . $request->{'question' . $page . '_' . $questionCount . '_var'} . "} ";  
+                if ($page != $request->_page)
+                {
+                    $answerField .= "\${" . $request->{'question' . $page . '_' . $questionCount . '_var'} . "} ";
+                }
                 $fields .= <<<FIELDS
                  - {$fieldName}: {$varibaleName} \n
-                FIELDS;  
+                FIELDS;
             }
-            $xml .= $header . $fields . "---\n"; 
+            if ($page == $request->_page && $is_mandatory) {
+                $xml .= $is_mandatory . $header . $fields . "---\n";
+            }
+            else
+            {
+                $xml .= $header . $fields . "---\n";
+            }
         }
 
         $xml .= <<<ANSWER
         question: Result of question
         subquestion: |
-         target_variable is: {$answerField }
+         Response is: {$answerField }
         mandatory: True
         ANSWER;
         Storage::disk('uploads')->put('interviews/new_multiple.yml', $xml);
@@ -109,7 +129,7 @@ class InterviewController extends Controller
                 [
                     'name' => 'folder',
                     'contents' => 'questions'
-                ] 
+                ]
             ]
             // 'form_params' => [
             //     [
@@ -149,7 +169,7 @@ class InterviewController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => array('file'=> new \CURLFILE('/var/www/html/privatechat.example.com/public/uploads/interviews/new_multiple.yml', '', 'api_test.yml'),'folder' => 'questions'),
+            CURLOPT_POSTFIELDS => array('file'=> new \CURLFILE('/var/www/html/privatechat.example.com/public/uploads/interviews/new_multiple.yml', '', 'conditional_page.yml'),'folder' => 'questions'),
             CURLOPT_HTTPHEADER => array(
                 "X-API-Key: rypVUUEsaDn4lniaGNRG29NZRISBItym"
             ),
@@ -185,5 +205,4 @@ class InterviewController extends Controller
         curl_close($curl);
         return $response;
     }
-
 }

@@ -72,6 +72,34 @@
                     <div class="column">
                         <h1>Page 2</h1>
                     </div>
+                    <div class="column">
+                        <a href="#" id="toggleCondition" onclick="toggleCondition()"><i class="fa fa-forward" aria-hidden="true" title="Add Page Logic"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="columns is-hidden" id="conditionBox">
+                    <div class="column">
+                        <div class="select">
+                            <select>
+                                <option>Select dropdown</option>
+                                <option>Show If</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="select">
+                            <select class="selectVar" name="mendatory_var">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Value" name="question_condition">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="columns">
                     <div class="column">
@@ -126,16 +154,16 @@
         </form>
     </div>
     <script>
-        document.querySelector('#wrapper2').style.display = "none";
-        let form = document.querySelector('#myForm');
+        $('#wrapper2').style.display = "none";
+        let form = $('#myForm');
         
-        document.querySelector('#myForm').addEventListener('submit', (form) => {
+        $('#myForm').addEventListener('submit', (form) => {
             form.preventDefault();
             var formData = new FormData(form.target);
             var myInit = { 
                 method: 'POST',
                 headers: {
-                    'X-CSRF-TOKEN': document.querySelector('#csrf_token').value,
+                    'X-CSRF-TOKEN': $('#csrf_token').value,
                 },
                 body : formData,
                 mode: 'cors',
@@ -146,26 +174,26 @@
             var myRequest = new Request('{{ route('interview.storepage')}}', myInit);
             
             fetch(myRequest).then(function(response) {
-                document.querySelector('#submitForm').innerHTML = 'Please Wait...';
+                $('#submitForm').innerHTML = 'Please Wait...';
                 var contentType = response.headers.get("content-type");
                 if(contentType && contentType.includes("application/json")) {
                     return response.json();
                 }
                 throw new TypeError("Error: JSON not returned from sign-in site");
             }).then((response) => {
-                document.querySelector('#submitForm').innerHTML = 'Submit';
+                $('#submitForm').innerHTML = 'Submit';
                 
             });
         })
 
         let clicks = 0;
-        document.querySelector('#addMore').addEventListener('click', (event) => {
+        $('#addMore').addEventListener('click', (event) => {
             event.preventDefault();
-            let page = document.querySelector('#current_page').value;
-            let questionCount = document.querySelector('#questionCountPage' + page).value;
-            document.querySelector('#questionCountPage' + page).value = questionCount* 1 + 1;
+            let page = $('#current_page').value;
+            let questionCount = $('#questionCountPage' + page).value;
+            $('#questionCountPage' + page).value = questionCount* 1 + 1;
 
-            document.querySelector('#wrapper' + page).innerHTML += `<div class="columns">
+            $('#wrapper' + page).innerHTML += `<div class="columns">
                 <div class="column">
                     <div class="field">
                         <label class="label">Variable Name</label>
@@ -195,16 +223,45 @@
             </div>`;
         });
 
-        document.querySelector('#page1').addEventListener('click', (event) => {
-            document.querySelector('#wrapper1').style.display = "block";
-            document.querySelector('#wrapper2').style.display = "none";
-            document.querySelector('#current_page').value = 1;
+        $('#page1').addEventListener('click', (event) => {
+            $('#wrapper1').style.display = "block";
+            $('#wrapper2').style.display = "none";
+            $('#current_page').value = 1;
         })
-        document.querySelector('#page2').addEventListener('click', (event) => {
-            document.querySelector('#wrapper1').style.display = "none";
-            document.querySelector('#wrapper2').style.display = "block";
-            document.querySelector('#current_page').value = 2;
+        $('#page2').addEventListener('click', (event) => {
+            $('#wrapper1').style.display = "none";
+            $('#wrapper2').style.display = "block";
+            $('#current_page').value = 2;
+            createVarDropDown();
         })
+
+        function toggleCondition()
+        {
+            $('#conditionBox').classList.toggle('is-hidden');
+        }
+
+        function createVarDropDown()
+        {
+            let questionCount = ($('#questionCountPage1').value) * 1;
+            textnode2 = $(".selectVar");
+            elel = document.querySelectorAll('.selectVar option');
+            elel.forEach(option => {
+                (option.text != 'Select') ? option.remove() : '';
+            });
+            for (let index = 1; index <= questionCount; index++) {
+                var op = new Option();
+                op.value = $(`input[name=question1_${index}_var]`).value;
+                op.text = $(`input[name=question1_${index}_var]`).value;
+                textnode2.options.add(op); 
+            }
+            // let variableElements = document.querySelector('input[name=question1_1_var]');
+        }
+
+        function $(element) {
+            return document.querySelector(element);
+        }
+
+
     </script>
 </body>
 
